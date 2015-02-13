@@ -1,0 +1,32 @@
+
+<script>
+var words = ["Hello","Bulgaria"];
+var text="Hello Hack Bulgaria"
+
+function maskOutWords(words, text)
+{
+
+    var newText;
+    var replace;
+    for(var i=0;i<words.length;i++)
+    {
+          for(var k=0;k<words[i].length;k++)
+          {
+             replace+='*';
+           
+          }
+          newText=text.replace(words[i],replace);
+          text=newText;
+          replace="";
+    }
+    console.log(text);
+}
+
+maskOutWords(words,text);
+
+
+
+
+
+</script>
+

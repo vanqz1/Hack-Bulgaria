@@ -1,0 +1,4 @@
+C:\Users\Lenovo\AppData\Local\Temporary Projects\hack bulgaria\bin\Release\hack bulgaria.exe
+C:\Users\Lenovo\AppData\Local\Temporary Projects\hack bulgaria\bin\Release\hack bulgaria.pdb
+C:\Users\Lenovo\AppData\Local\Temporary Projects\hack bulgaria\obj\x86\Release\hack bulgaria.exe
+C:\Users\Lenovo\AppData\Local\Temporary Projects\hack bulgaria\obj\x86\Release\hack bulgaria.pdb

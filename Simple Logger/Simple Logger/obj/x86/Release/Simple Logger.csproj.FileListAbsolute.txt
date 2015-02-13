@@ -1,0 +1,5 @@
+E:\hack bulgaria\Simple Logger\Simple Logger\bin\Release\Simple Logger.exe
+E:\hack bulgaria\Simple Logger\Simple Logger\bin\Release\Simple Logger.pdb
+E:\hack bulgaria\Simple Logger\Simple Logger\obj\x86\Release\Simple Logger.exe
+E:\hack bulgaria\Simple Logger\Simple Logger\obj\x86\Release\Simple Logger.pdb
+E:\hack bulgaria\Simple Logger\Simple Logger\obj\x86\Release\Simple Logger.csprojResolveAssemblyReference.cache

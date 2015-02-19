@@ -1,0 +1,6 @@
+C:\Users\Lenovo\AppData\Local\Temporary Projects\csv fail\bin\Release\csv fail.exe
+C:\Users\Lenovo\AppData\Local\Temporary Projects\csv fail\bin\Release\csv fail.pdb
+C:\Users\Lenovo\AppData\Local\Temporary Projects\csv fail\obj\x86\Release\csv fail.exe
+C:\Users\Lenovo\AppData\Local\Temporary Projects\csv fail\obj\x86\Release\csv fail.pdb
+E:\hack bulgaria\Hack-Bulgaria\CSV file\csv fail\csv fail\obj\x86\Release\csv fail.exe
+E:\hack bulgaria\Hack-Bulgaria\CSV file\csv fail\csv fail\obj\x86\Release\csv fail.pdb

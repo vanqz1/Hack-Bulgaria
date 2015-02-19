@@ -1,0 +1,4 @@
+C:\Users\Lenovo\AppData\Local\Temporary Projects\csv fail\bin\Debug\csv fail.exe
+C:\Users\Lenovo\AppData\Local\Temporary Projects\csv fail\bin\Debug\csv fail.pdb
+C:\Users\Lenovo\AppData\Local\Temporary Projects\csv fail\obj\x86\Debug\csv fail.exe
+C:\Users\Lenovo\AppData\Local\Temporary Projects\csv fail\obj\x86\Debug\csv fail.pdb

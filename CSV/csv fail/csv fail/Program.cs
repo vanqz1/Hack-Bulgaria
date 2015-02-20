@@ -16,11 +16,10 @@ namespace ConsoleApplication1
             {
                 string[] mask;
                 string s = " ";
-
-
                 int numcol = 0;
                 int check = 0;
                 int numRow = 0;
+
                 //// Save data from CSV file in a list
                 List<List<string>> data = new List<List<string>>();
                 while ((s = sr.ReadLine()) != null)
@@ -64,10 +63,28 @@ namespace ConsoleApplication1
 
 
                 string query = Console.ReadLine();
-                string[] commands = Regex.Split(query, @"\s+");
+                string[] commands = query.Split(' ',',');
+               
+                ///Check which is the longest string in data
+                int maxLenStr=0;
+                foreach (var item in data)
+                {
+                    foreach (var el in item)
+                    {
+                        int temp = el.Length;
+                        if(temp>maxLenStr)
+                        {
+                            maxLenStr = temp;
+                        }
+                    }
+                    
+                }
 
+                //Console.WriteLine(maxLenStr);
 
-
+                bool checkPrint = false;
+                bool checkFound = false;
+                 
                 /// the switch takes the first command of user
                 switch (commands[0])
                 {
@@ -76,7 +93,7 @@ namespace ConsoleApplication1
                             for (int i = 0; i < numcol; i++)
                             {
                                 Console.Write("|");
-                                Console.Write(data[i][0]);
+                                Console.Write(String.Format("{0, -10}", data[i][0]));
                                 Console.Write("|");
                             }
                             Console.WriteLine();
@@ -84,7 +101,7 @@ namespace ConsoleApplication1
                         }
                     case "FIND":
                         {
-                            string contain = commands[1];
+                            string contain = commands[1].Trim( new Char[] { '"' } );
                             List<int> foundRow = new List<int>();
                             for (int i = 0; i < numRow; i++)
                             {
@@ -92,17 +109,29 @@ namespace ConsoleApplication1
                                 {
                                     if (data[k][i].Contains(contain))
                                     {
-                                        foundRow.Add(i);
-
+                                        checkFound = true;
                                         for (int m = 0; m < numcol; m++)
                                         {
-                                            Console.Write(data[m][i]);
+                                            Console.Write("|");
                                             Console.Write(" ");
+                                            Console.Write(String.Format("{0, -10}", data[m][i]));
+                                            Console.Write(" ");
+                                            Console.Write("|");
                                         }
                                         Console.WriteLine(" ");
-                                        
+
+                                       if(i+1<numRow)
+                                       {
+                                        k = 0;
+                                        i = i + 1;
+                                       }
                                     }
                                 }
+                            }
+
+                            if(checkFound==false)
+                            {
+                                Console.WriteLine("Nothing found!"); 
                             }
                             break;
                         }
@@ -114,10 +143,19 @@ namespace ConsoleApplication1
                             {
                                 if (listcols[i] == commands[1])
                                 {
+                                    checkPrint = true;
                                     choosencol = i;
                                 }
 
                             }
+
+                            /// Check whether the query contains correct col
+                            if (checkPrint == false)
+                            {
+                                Console.WriteLine("Wrong col!");
+                                break;
+                            }
+
                             int sum = 0;
                             for (int i = 0; i < data[choosencol].Count; i++)
                             {
@@ -132,7 +170,8 @@ namespace ConsoleApplication1
                         }
                     case "SELECT":
                         {
-
+                            
+                            bool checkLim = false;
                             List<int> result = new List<int>();
                             int choosencol = 0;
                             ////Check whether the query contains LIMIT
@@ -143,12 +182,20 @@ namespace ConsoleApplication1
                                 {
                                     if (commands[k] == "LIMIT")
                                     {
-                                        lim = int.Parse(commands[k + 1]);
+                                        lim = int.Parse(commands[k + 1])+1;
+                                        
+                                        
+                                        /// Check whether a limit is a valid number
+                                        if (lim <= 0 || lim > numRow)
+                                        {
+                                            checkLim = true;
+                                        }
                                     }
                                 }
 
                             }
 
+                            
                             for (int i = 1; i < commands.Length; i++)
                             {
                                 for (int k = 0; k < listcols.Count; k++)
@@ -156,10 +203,25 @@ namespace ConsoleApplication1
                                     /// Checks whick cols are chosen
                                     if (commands[i] == listcols[k])
                                     {
+                                        checkPrint = true;
                                         choosencol = k;
                                         result.Add(k);
                                     }
                                 }
+                            }
+
+                            /// Check whether the query contains correct col
+                            if (checkPrint == false)
+                            {
+                                Console.WriteLine("Wrong col!");
+                                break;
+                            }
+
+                            /// Check whether the limit is valid number
+                            if (checkLim == true)
+                            {
+                                Console.WriteLine("The LIMIT should be more than 0 and less than {0}", numRow);
+                                break;
                             }
 
                             ////Prints the table the if/else statements determines whether there is a limit or no 
@@ -170,7 +232,9 @@ namespace ConsoleApplication1
                                     for (int i = 0; i < result.Count; i++)
                                     {
                                         Console.Write("|");
-                                        Console.Write(data[result[i]][m]);
+                                        Console.Write(" ");
+                                        Console.Write(String.Format("{0, -10}", data[result[i]][m]));
+                                        Console.Write(" ");
                                         Console.Write("|");
                                     }
                                     Console.WriteLine(" ");
@@ -184,7 +248,9 @@ namespace ConsoleApplication1
                                     for (int i = 0; i < result.Count; i++)
                                     {
                                         Console.Write("|");
-                                        Console.Write(data[result[i]][m]);
+                                        Console.Write(" ");
+                                        Console.Write(String.Format("{0, -10}", data[result[i]][m]));
+                                        Console.Write(" ");
                                         Console.Write("|");
                                     }
                                     Console.WriteLine(" ");
@@ -192,8 +258,6 @@ namespace ConsoleApplication1
                                 }
 
                             }
-
-
                             break;
                         }
 
@@ -201,7 +265,6 @@ namespace ConsoleApplication1
                         {
                             Console.WriteLine("Please write correct query!");
                             break;
-
                         }
                 }
 

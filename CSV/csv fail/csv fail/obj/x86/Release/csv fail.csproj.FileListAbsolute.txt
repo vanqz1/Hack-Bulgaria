@@ -10,3 +10,7 @@ E:\hack bulgaria\Hack-Bulgaria\CSV\csv fail\csv fail\obj\x86\Release\csv fail.ex
 E:\hack bulgaria\Hack-Bulgaria\CSV\csv fail\csv fail\obj\x86\Release\csv fail.pdb
 E:\hack bulgaria\Hack-Bulgaria\CSV\csv fail\csv fail\bin\Release\csv fail.exe
 E:\hack bulgaria\Hack-Bulgaria\CSV\csv fail\csv fail\bin\Release\csv fail.pdb
+E:\Нова папка\Hack-Bulgaria\CSV\csv fail\csv fail\obj\x86\Release\csv fail.exe
+E:\Нова папка\Hack-Bulgaria\CSV\csv fail\csv fail\obj\x86\Release\csv fail.pdb
+E:\Нова папка\Hack-Bulgaria\CSV\csv fail\csv fail\bin\Release\csv fail.exe
+E:\Нова папка\Hack-Bulgaria\CSV\csv fail\csv fail\bin\Release\csv fail.pdb

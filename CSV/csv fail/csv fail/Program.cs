@@ -82,15 +82,10 @@ namespace ConsoleApplication1
                             break;
                         }
                     case "FIND":
-                        {
-                            for (int i = 0; i < numcol; i++)
-                            {
-                                Console.Write("|");
-                                Console.Write(" ");
-                                Console.Write(String.Format("{0, -10}", data[i][0]));
-                                Console.Write(" ");
-                                Console.Write("|");
-                            }
+                        { 
+                            ///  It is the way I will be sure that the name of cols will be shown only one 
+                            int showCows = 1;
+                            
                             Console.WriteLine();
                             string contain = commands[1].Trim(new Char[] { '"' });
                             List<int> foundRow = new List<int>();
@@ -101,6 +96,19 @@ namespace ConsoleApplication1
                                     if (data[k][i].Contains(contain))
                                     {
                                         checkFound = true;
+                                        if (showCows == 1)
+                                        {
+                                            for (int x = 0; x < numcol; x++)
+                                            {
+                                                Console.Write("|");
+                                                Console.Write(" ");
+                                                Console.Write(String.Format("{0, -10}", data[x][0]));
+                                                Console.Write(" ");
+                                                Console.Write("|");
+                                            }
+                                            Console.WriteLine(" ");
+                                            showCows++;
+                                        }
                                         string rowMatch = " ";
                                         for (int m = 0; m < numcol; m++)
                                         {

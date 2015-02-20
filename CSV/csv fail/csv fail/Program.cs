@@ -64,24 +64,6 @@ namespace ConsoleApplication1
 
                 string query = Console.ReadLine();
                 string[] commands = query.Split(' ',',');
-               
-                ///Check which is the longest string in data
-                int maxLenStr=0;
-                foreach (var item in data)
-                {
-                    foreach (var el in item)
-                    {
-                        int temp = el.Length;
-                        if(temp>maxLenStr)
-                        {
-                            maxLenStr = temp;
-                        }
-                    }
-                    
-                }
-
-                //Console.WriteLine(maxLenStr);
-
                 bool checkPrint = false;
                 bool checkFound = false;
                  
@@ -110,8 +92,10 @@ namespace ConsoleApplication1
                                     if (data[k][i].Contains(contain))
                                     {
                                         checkFound = true;
+                                        string rowMatch=" ";
                                         for (int m = 0; m < numcol; m++)
                                         {
+                                            rowMatch+= data[m][i].ToString()+" ";
                                             Console.Write("|");
                                             Console.Write(" ");
                                             Console.Write(String.Format("{0, -10}", data[m][i]));
@@ -119,6 +103,12 @@ namespace ConsoleApplication1
                                             Console.Write("|");
                                         }
                                         Console.WriteLine(" ");
+
+                                        //// match the choosen symbol with each row in which it is
+                                        Regex Contain = new Regex(@contain);
+                                        Match isMatch = Contain.Match(rowMatch);
+                                        
+                                        
 
                                        if(i+1<numRow)
                                        {

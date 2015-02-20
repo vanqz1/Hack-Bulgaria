@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +11,7 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            string path = @"C:\temp\test.csv";
+            string path = @"test.csv";
             using (StreamReader sr = File.OpenText(path))
             {
                 string[] mask;
@@ -63,10 +63,10 @@ namespace ConsoleApplication1
 
 
                 string query = Console.ReadLine();
-                string[] commands = query.Split(' ',',');
+                string[] commands = query.Split(' ', ',');
                 bool checkPrint = false;
                 bool checkFound = false;
-                 
+
                 /// the switch takes the first command of user
                 switch (commands[0])
                 {
@@ -83,7 +83,7 @@ namespace ConsoleApplication1
                         }
                     case "FIND":
                         {
-                            string contain = commands[1].Trim( new Char[] { '"' } );
+                            string contain = commands[1].Trim(new Char[] { '"' });
                             List<int> foundRow = new List<int>();
                             for (int i = 0; i < numRow; i++)
                             {
@@ -92,10 +92,10 @@ namespace ConsoleApplication1
                                     if (data[k][i].Contains(contain))
                                     {
                                         checkFound = true;
-                                        string rowMatch=" ";
+                                        string rowMatch = " ";
                                         for (int m = 0; m < numcol; m++)
                                         {
-                                            rowMatch+= data[m][i].ToString()+" ";
+                                            rowMatch += data[m][i].ToString() + " ";
                                             Console.Write("|");
                                             Console.Write(" ");
                                             Console.Write(String.Format("{0, -10}", data[m][i]));
@@ -107,21 +107,21 @@ namespace ConsoleApplication1
                                         //// match the choosen symbol with each row in which it is
                                         Regex Contain = new Regex(@contain);
                                         Match isMatch = Contain.Match(rowMatch);
-                                        
-                                        
 
-                                       if(i+1<numRow)
-                                       {
-                                        k = 0;
-                                        i = i + 1;
-                                       }
+
+
+                                        if (i + 1 < numRow)
+                                        {
+                                            k = 0;
+                                            i = i + 1;
+                                        }
                                     }
                                 }
                             }
 
-                            if(checkFound==false)
+                            if (checkFound == false)
                             {
-                                Console.WriteLine("Nothing found!"); 
+                                Console.WriteLine("Nothing found!");
                             }
                             break;
                         }
@@ -160,7 +160,7 @@ namespace ConsoleApplication1
                         }
                     case "SELECT":
                         {
-                            
+
                             bool checkLim = false;
                             List<int> result = new List<int>();
                             int choosencol = 0;
@@ -172,9 +172,9 @@ namespace ConsoleApplication1
                                 {
                                     if (commands[k] == "LIMIT")
                                     {
-                                        lim = int.Parse(commands[k + 1])+1;
-                                        
-                                        
+                                        lim = int.Parse(commands[k + 1]) + 1;
+
+
                                         /// Check whether a limit is a valid number
                                         if (lim <= 0 || lim > numRow)
                                         {
@@ -185,7 +185,7 @@ namespace ConsoleApplication1
 
                             }
 
-                            
+
                             for (int i = 1; i < commands.Length; i++)
                             {
                                 for (int k = 0; k < listcols.Count; k++)

@@ -5,3 +5,8 @@ E:\hack bulgaria\Simple Logger\Simple Logger\obj\x86\Release\Simple Logger.pdb
 E:\hack bulgaria\Simple Logger\Simple Logger\obj\x86\Release\Simple Logger.csprojResolveAssemblyReference.cache
 E:\hack bulgaria\Hack-Bulgaria\Simple Logger\Simple Logger\obj\x86\Release\Simple Logger.exe
 E:\hack bulgaria\Hack-Bulgaria\Simple Logger\Simple Logger\obj\x86\Release\Simple Logger.pdb
+E:\Нова папка\Hack-Bulgaria\SimpleLogger\Simple Logger\obj\x86\Release\Simple Logger.exe
+E:\Нова папка\Hack-Bulgaria\SimpleLogger\Simple Logger\obj\x86\Release\Simple Logger.pdb
+E:\Нова папка\Hack-Bulgaria\SimpleLogger\Simple Logger\bin\Release\Simple Logger.exe
+E:\Нова папка\Hack-Bulgaria\SimpleLogger\Simple Logger\obj\x86\Release\Simple Logger.csprojResolveAssemblyReference.cache
+E:\Нова папка\Hack-Bulgaria\SimpleLogger\Simple Logger\bin\Release\Simple Logger.pdb

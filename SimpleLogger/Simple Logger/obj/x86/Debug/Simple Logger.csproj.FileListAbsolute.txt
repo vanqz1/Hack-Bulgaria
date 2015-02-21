@@ -1,0 +1,4 @@
+E:\Нова папка\Hack-Bulgaria\SimpleLogger\Simple Logger\bin\Debug\Simple Logger.exe
+E:\Нова папка\Hack-Bulgaria\SimpleLogger\Simple Logger\bin\Debug\Simple Logger.pdb
+E:\Нова папка\Hack-Bulgaria\SimpleLogger\Simple Logger\obj\x86\Debug\Simple Logger.exe
+E:\Нова папка\Hack-Bulgaria\SimpleLogger\Simple Logger\obj\x86\Debug\Simple Logger.pdb

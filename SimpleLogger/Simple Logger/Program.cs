@@ -90,13 +90,11 @@ namespace second
     {
         public void log(int level, string message)
         {
-            string FileName = "fileLogger.txt";
-            StreamWriter writer = new StreamWriter(FileName);
+      
             string date = System.DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ssK");
             string result = null;
 
-            using (writer)
-            {
+           
                 switch (level)
                 {
                     case 1:
@@ -148,7 +146,7 @@ namespace second
                
                 // Testing whether the data was successfull sent
                 Console.WriteLine(((HttpWebResponse)response).StatusDescription);
-             }
+             
 
 
 
@@ -169,23 +167,22 @@ namespace second
             ConsoleLogger test13 = new ConsoleLogger();
             test13.log(3, "hallo");
 
-            FileLogger test21 = new FileLogger();
-            test21.log(1, "Hello");
+            
 
-            FileLogger test22 = new FileLogger();
-            test22.log(2, "Moha");
-
+           
             FileLogger test23 = new FileLogger();
-            test23.log(3, "hallo");
+            test23.log(1, "Moha");
+            
+            FileLogger test24 = new FileLogger();
+            test24.log(1, "HI");
+
 
             HTTPLogger test31 = new HTTPLogger();
             test31.log(1, "Hello");
 
             HTTPLogger test32 = new HTTPLogger();
-            test32.log(2, "Moha");
+            test32.log(3, "Moha");
 
-            HTTPLogger test33 = new HTTPLogger();
-            test33.log(2, "Hallo");
         }
     }
 

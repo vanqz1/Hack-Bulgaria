@@ -55,7 +55,7 @@ namespace second
         public void log(int level, string message)
         {
             string FileName = "fileLogger.txt";
-            StreamWriter writer = new StreamWriter(FileName);
+            StreamWriter writer = new StreamWriter(FileName,true);
             string date = System.DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ssK");
             string result = null;
 
@@ -83,7 +83,7 @@ namespace second
                 }
 
                 writer.WriteLine(result);
-            }
+             }
         }
     }
     class HTTPLogger : Mylogger
@@ -147,10 +147,7 @@ namespace second
                 // Testing whether the data was successfull sent
                 Console.WriteLine(((HttpWebResponse)response).StatusDescription);
              
-
-
-
-        }
+           }
     }
 
     class Program
@@ -167,16 +164,16 @@ namespace second
             ConsoleLogger test13 = new ConsoleLogger();
             test13.log(3, "hallo");
 
-            
+            FileLogger test21 = new FileLogger();
+            test21.log(1, "Hello");
 
-           
+            FileLogger test22 = new FileLogger();
+            test22.log(2, "Moha");
+
             FileLogger test23 = new FileLogger();
-            test23.log(1, "Moha");
+            test23.log(3, "Hallo");
             
-            FileLogger test24 = new FileLogger();
-            test24.log(1, "HI");
-
-
+           
             HTTPLogger test31 = new HTTPLogger();
             test31.log(1, "Hello");
 

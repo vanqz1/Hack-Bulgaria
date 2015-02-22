@@ -14,3 +14,7 @@ E:\Нова папка\Hack-Bulgaria\CSV\csv fail\csv fail\obj\x86\Release\csv f
 E:\Нова папка\Hack-Bulgaria\CSV\csv fail\csv fail\obj\x86\Release\csv fail.pdb
 E:\Нова папка\Hack-Bulgaria\CSV\csv fail\csv fail\bin\Release\csv fail.exe
 E:\Нова папка\Hack-Bulgaria\CSV\csv fail\csv fail\bin\Release\csv fail.pdb
+C:\Users\Lenovo\Desktop\Нова папка (3)\Hack-Bulgaria\CSV\csv fail\csv fail\obj\x86\Release\csv fail.exe
+C:\Users\Lenovo\Desktop\Нова папка (3)\Hack-Bulgaria\CSV\csv fail\csv fail\obj\x86\Release\csv fail.pdb
+C:\Users\Lenovo\Desktop\Нова папка (3)\Hack-Bulgaria\CSV\csv fail\csv fail\bin\Release\csv fail.exe
+C:\Users\Lenovo\Desktop\Нова папка (3)\Hack-Bulgaria\CSV\csv fail\csv fail\bin\Release\csv fail.pdb

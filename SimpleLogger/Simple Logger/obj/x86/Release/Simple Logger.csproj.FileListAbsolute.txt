@@ -10,3 +10,5 @@ E:\Нова папка\Hack-Bulgaria\SimpleLogger\Simple Logger\obj\x86\Release\
 E:\Нова папка\Hack-Bulgaria\SimpleLogger\Simple Logger\bin\Release\Simple Logger.exe
 E:\Нова папка\Hack-Bulgaria\SimpleLogger\Simple Logger\obj\x86\Release\Simple Logger.csprojResolveAssemblyReference.cache
 E:\Нова папка\Hack-Bulgaria\SimpleLogger\Simple Logger\bin\Release\Simple Logger.pdb
+C:\Users\Lenovo\Desktop\Нова папка (3)\Hack-Bulgaria\SimpleLogger\Simple Logger\obj\x86\Release\Simple Logger.exe
+C:\Users\Lenovo\Desktop\Нова папка (3)\Hack-Bulgaria\SimpleLogger\Simple Logger\obj\x86\Release\Simple Logger.pdb

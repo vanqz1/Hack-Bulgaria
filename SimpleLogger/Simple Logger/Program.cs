@@ -3,282 +3,192 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
-using System.Text.RegularExpressions;
+using System.Net;
 
-namespace ConsoleApplication1
+namespace second
 {
+    /// Declaring an interface MyLogger with the only method log
+
+    interface Mylogger
+    {
+        void log(int level, string message);
+    }
+
+    /// Make a class ConsoleLogger that implements MyLogger
+    /// The ckass ConsoleLogger would write the result on the console
+    class ConsoleLogger : Mylogger
+    {
+        public void log(int level, string message)
+        {
+            string date = System.DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ssK");
+            string result = null;
+            switch (level)
+            {
+                case 1:
+                    {
+                        result = "INFO" + "::" + date + "::" + message;
+                        break;
+                    }
+
+                case 2:
+                    {
+                        result = "WARNING" + "::" + date + "::" + message;
+                        break;
+                    }
+
+                case 3:
+                    {
+                        result = "PLSCHECKFFS" + "::" + date + "::" + message;
+                        break;
+                    }
+            }
+
+            Console.WriteLine(result);
+        }
+    }
+
+    /// Make a class FileLogger that implements MyLogger
+    /// The ckass ConsoleLogger would write the result on the File
+    /// The directory of the file is /Simple Logger /Bin/Release/fileLogger.txt
+    class FileLogger : Mylogger
+    {
+        public void log(int level, string message)
+        {
+            string FileName = "fileLogger.txt";
+            /// that way it would save and old information in text file if we use 
+            /// StreamWriter writer = new StreamWriter(FileName); it won't , but i write it that way because 
+            /// it is easy to show what will write on file when i call method
+            StreamWriter writer = new StreamWriter(FileName, true);
+            string date = System.DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ssK");
+            string result = null;
+
+            using (writer)
+            {
+                switch (level)
+                {
+                    case 1:
+                        {
+                            result = "INFO" + "::" + date + "::" + message;
+                            break;
+                        }
+
+                    case 2:
+                        {
+                            result = "WARNING" + "::" + date + "::" + message;
+                            break;
+                        }
+
+                    case 3:
+                        {
+                            result = "PLSCHECKFFS" + "::" + date + "::" + message;
+                            break;
+                        }
+                }
+
+                writer.WriteLine(result);
+            }
+        }
+    }
+    class HTTPLogger : Mylogger
+    {
+        public void log(int level, string message)
+        {
+
+            string date = System.DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ssK");
+            string result = null;
+
+
+            switch (level)
+            {
+                case 1:
+                    {
+                        result = "INFO" + "::" + date + "::" + message;
+                        break;
+                    }
+
+                case 2:
+                    {
+                        result = "WARNING" + "::" + date + "::" + message;
+                        break;
+                    }
+
+                case 3:
+                    {
+                        result = "PLSCHECKFFS" + "::" + date + "::" + message;
+                        break;
+                    }
+            }
+
+            //Creating a request using a URL 
+            WebRequest request = WebRequest.Create("http://www.contoso.com/PostAccepter.aspx ");
+
+            // Set the Method property of the request to POST.
+            request.Method = "POST";
+
+            // Creating a POST data and convert it to a byte array.
+            string postData = result;
+            byte[] byteArray = Encoding.UTF8.GetBytes(postData);
+
+            // Set the ContentType property of the WebRequest.
+            request.ContentType = "application/x-www-form-urlencoded";
+
+            // Set the ContentLength property of the WebRequest.
+            request.ContentLength = byteArray.Length;
+
+            // Get the request stream.
+            Stream dataStream = request.GetRequestStream();
+
+            // Write the data to the request stream.
+            dataStream.Write(byteArray, 0, byteArray.Length);
+
+            // Close the Stream object.
+            dataStream.Close();
+
+            // Get the response.
+            WebResponse response = request.GetResponse();
+
+            // Testing whether the data was successfull sent
+            Console.WriteLine(((HttpWebResponse)response).StatusDescription);
+
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
         {
-            string path = @"test.csv";
-            using (StreamReader sr = File.OpenText(path))
-            {
-                string[] mask;
-                string s = " ";
-                int numcol = 0;
-                int check = 0;
-                int numRow = 0;
 
-                //// Save data from CSV file in a list
-                List<List<string>> data = new List<List<string>>();
-                while ((s = sr.ReadLine()) != null)
-                {
-                    numRow++;
-                    check++;
-                    int countCreate = 0;
-                    int i = 0;
-                    mask = s.Split(' ', ',');
-                    if (check == 1)
-                    {
-                        numcol = mask.Length;
-                    }
-                    if (countCreate == 0)
-                    {
+            ConsoleLogger test11 = new ConsoleLogger();
+            test11.log(1, "Hello");
 
-                        for (int j = 0; j < mask.Length; j++)
-                        {
-                            data.Add(new List<string>());
-                        }
-                        countCreate++;
-                    }
+            ConsoleLogger test12 = new ConsoleLogger();
+            test12.log(2, "Moha");
 
-                    foreach (var element in mask)
-                    {
-                        data[i].Add(element);
-                        i++;
-                    }
+            ConsoleLogger test13 = new ConsoleLogger();
+            test13.log(3, "hallo");
 
-                    i = 0;
+            FileLogger test21 = new FileLogger();
+            test21.log(1, "Hello");
+
+            FileLogger test22 = new FileLogger();
+            test22.log(2, "Moha");
+
+            FileLogger test23 = new FileLogger();
+            test23.log(3, "Hallo");
 
 
-                }
-                /// List of names of cols
-                List<string> listcols = new List<string>();
-                for (int i = 0; i < numcol; i++)
-                {
+            HTTPLogger test31 = new HTTPLogger();
+            test31.log(1, "Hello");
 
-                    listcols.Add(data[i][0]);
-                }
+            HTTPLogger test32 = new HTTPLogger();
+            test32.log(3, "Moha");
 
-
-                string query = Console.ReadLine();
-                string[] commands = query.Split(' ', ',');
-                bool checkPrint = false;
-                bool checkFound = false;
-
-                /// the switch takes the first command of user
-                switch (commands[0])
-                {
-                    case "SHOW":
-                        {
-                            for (int i = 0; i < numcol; i++)
-                            {
-                                Console.Write("|");
-                                Console.Write(String.Format("{0, -10}", data[i][0]));
-                                Console.Write("|");
-                            }
-                            Console.WriteLine();
-                            break;
-                        }
-                    case "FIND":
-                        {
-                            ///  It is the way I will be sure that the name of cols will be shown only one 
-                            int showCows = 1;
-
-                            Console.WriteLine();
-                            string contain = commands[1].Trim(new Char[] { '"' });
-                            List<int> foundRow = new List<int>();
-                            for (int i = 0; i < numRow; i++)
-                            {
-                                for (int k = 0; k < numcol; k++)
-                                {
-                                    if (data[k][i].Contains(contain))
-                                    {
-                                        checkFound = true;
-                                        if (showCows == 1)
-                                        {
-                                            for (int x = 0; x < numcol; x++)
-                                            {
-                                                Console.Write("|");
-                                                Console.Write(" ");
-                                                Console.Write(String.Format("{0, -10}", data[x][0]));
-                                                Console.Write(" ");
-                                                Console.Write("|");
-                                            }
-                                            Console.WriteLine(" ");
-                                            showCows++;
-                                        }
-                                        string rowMatch = " ";
-                                        for (int m = 0; m < numcol; m++)
-                                        {
-                                            rowMatch += data[m][i].ToString() + " ";
-                                            Console.Write("|");
-                                            Console.Write(" ");
-                                            Console.Write(String.Format("{0, -10}", data[m][i]));
-                                            Console.Write(" ");
-                                            Console.Write("|");
-                                        }
-                                        Console.WriteLine(" ");
-
-                                        //// match the choosen symbol with each row in which it is
-                                        Regex Contain = new Regex(@contain);
-                                        Match isMatch = Contain.Match(rowMatch);
-
-
-
-                                        if (i + 1 < numRow)
-                                        {
-                                            k = 0;
-                                            i = i + 1;
-                                        }
-                                    }
-                                }
-                            }
-
-                            if (checkFound == false)
-                            {
-                                Console.WriteLine("Nothing found!");
-                            }
-                            break;
-                        }
-                    case "SUM":
-                        {
-                            int choosencol = 0;
-
-                            for (int i = 0; i < listcols.Count; i++)
-                            {
-                                if (listcols[i] == commands[1])
-                                {
-                                    checkPrint = true;
-                                    choosencol = i;
-                                }
-
-                            }
-
-                            /// Check whether the query contains correct col
-                            if (checkPrint == false)
-                            {
-                                Console.WriteLine("Wrong col!");
-                                break;
-                            }
-
-                            int sum = 0;
-                            for (int i = 0; i < data[choosencol].Count; i++)
-                            {
-                                int x;
-                                if (int.TryParse(data[choosencol][i], out x))
-                                {
-                                    sum += int.Parse(data[choosencol][i]);
-                                }
-                            }
-                            Console.WriteLine(sum);
-                            break;
-                        }
-                    case "SELECT":
-                        {
-
-                            bool checkLim = false;
-                            List<int> result = new List<int>();
-                            int choosencol = 0;
-                            ////Check whether the query contains LIMIT
-                            int lim = 0;
-                            for (int i = 1; i < commands.Length; i++)
-                            {
-                                for (int k = 0; k < commands.Length; k++)
-                                {
-                                    if (commands[k] == "LIMIT")
-                                    {
-                                        lim = int.Parse(commands[k + 1]) + 1;
-
-
-                                        /// Check whether a limit is a valid number
-                                        if (lim <= 0 || lim > numRow)
-                                        {
-                                            checkLim = true;
-                                        }
-                                    }
-                                }
-
-                            }
-
-
-                            for (int i = 1; i < commands.Length; i++)
-                            {
-                                for (int k = 0; k < listcols.Count; k++)
-                                {
-                                    /// Checks whick cols are chosen
-                                    if (commands[i] == listcols[k])
-                                    {
-                                        checkPrint = true;
-                                        choosencol = k;
-                                        result.Add(k);
-                                    }
-                                }
-                            }
-
-                            /// Check whether the query contains correct col
-                            if (checkPrint == false)
-                            {
-                                Console.WriteLine("Wrong col!");
-                                break;
-                            }
-
-                            /// Check whether the limit is valid number
-                            if (checkLim == true)
-                            {
-                                Console.WriteLine("The LIMIT should be more than 0 and less than {0}", numRow);
-                                break;
-                            }
-
-                            ////Prints the table the if/else statements determines whether there is a limit or no 
-                            if (lim == 0)
-                            {
-                                for (int m = 0; m < numRow; m++)
-                                {
-                                    for (int i = 0; i < result.Count; i++)
-                                    {
-                                        Console.Write("|");
-                                        Console.Write(" ");
-                                        Console.Write(String.Format("{0, -10}", data[result[i]][m]));
-                                        Console.Write(" ");
-                                        Console.Write("|");
-                                    }
-                                    Console.WriteLine(" ");
-
-                                }
-                            }
-                            else
-                            {
-                                for (int m = 0; m < lim; m++)
-                                {
-                                    for (int i = 0; i < result.Count; i++)
-                                    {
-                                        Console.Write("|");
-                                        Console.Write(" ");
-                                        Console.Write(String.Format("{0, -10}", data[result[i]][m]));
-                                        Console.Write(" ");
-                                        Console.Write("|");
-                                    }
-                                    Console.WriteLine(" ");
-
-                                }
-
-                            }
-                            break;
-                        }
-
-                    default:
-                        {
-                            Console.WriteLine("Please write correct query!");
-                            break;
-                        }
-                }
-
-            }
         }
     }
+
+
+
+
+
 }
-
-
 

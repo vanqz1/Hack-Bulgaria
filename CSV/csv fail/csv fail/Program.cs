@@ -89,7 +89,7 @@ namespace ConsoleApplication1
                             Console.WriteLine();
                             string contain = commands[1].Trim(new Char[] { '"' });
                             List<int> foundRow = new List<int>();
-                            for (int i = 0; i < numRow; i++)
+                            for (int i = 1; i < numRow; i++)
                             {
                                 for (int k = 0; k < numcol; k++)
                                 {
@@ -131,6 +131,10 @@ namespace ConsoleApplication1
                                         {
                                             k = 0;
                                             i = i + 1;
+                                        }
+                                        else 
+                                        {
+                                            break;
                                         }
                                     }
                                 }
